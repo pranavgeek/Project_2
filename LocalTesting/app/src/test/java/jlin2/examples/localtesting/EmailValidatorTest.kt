@@ -57,5 +57,16 @@ class EmailValidatorTest {
         var result = EmailValidator.isValidEmail(null)
         assertEquals(false,result)
     }
+    @Test
+    fun testInvalidEmailWithSpecialCharacters() {
+        val result = EmailValidator.isValidEmail("123@abc!xyz.com")
+        assertEquals(false, result)
+    }
+
+    @Test
+    fun testInvalidEmailWithWhitespace() {
+        val result = EmailValidator.isValidEmail("abc @example.com")
+        assertEquals(false, result)
+    }
 }
 
